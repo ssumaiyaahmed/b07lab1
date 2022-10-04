@@ -168,6 +168,19 @@ public class Polynomial{
 
 
 	}	
+	
+	public int count_occurrence(String [] array, String occurrence) {
+
+		int count = 0;
+		for(int i =0; i<array.length; i++) {
+			if(array[i] == occurrence)
+				count +=1;
+		}
+	
+		return count;
+
+
+	}
 
 	public String add_plus(String ln) {
 	
@@ -201,6 +214,20 @@ public class Polynomial{
 		
 
 	}
+	
+	public String [] remove_empty(String [] str_array) {
+		String [] new_array = new String [str_array.length - count_occurrence(str_array, "")];
+		int count =0;
+		for(int i = 0; i<str_array.length; i++) {
+			if(str_array[i] != "") {
+				new_array[count] = str_array[i];
+				count +=1;
+			}	
+		}
+		
+		return new_array;
+		
+	}
 
 	public Polynomial(File poly_file) throws IOException {
 
@@ -210,10 +237,9 @@ public class Polynomial{
 		br.close();
 		String plus_line = add_plus(line);
 
-		String [] plus_split = plus_line.split("\\+",-2);
-		
-		//System.out.println(plus_line);
-		
+		String [] plus_split = plus_line.split("\\+",-2);		
+		plus_split = remove_empty(plus_split);
+				
 		String [][] splitted = new String [plus_split.length][2]; 
 
 		for(int i = 0; i<plus_split.length; i++) {
@@ -250,6 +276,7 @@ public class Polynomial{
 	
 	public void saveToFile(String file_name) throws FileNotFoundException {
 		String poly = "";
+		
 		for(int i = 0; i<coeff.length; i++) {
 			if(expo[i] != 0)
 				if(coeff[i] < 0)
@@ -273,4 +300,5 @@ public class Polynomial{
 
 
 }
+
 

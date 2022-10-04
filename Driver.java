@@ -26,11 +26,16 @@ public class Driver {
    System.out.println("1 is not a root of s"); 
 
   File input_file = new File("C:\\Users\\Syeda Sumaiya Ahmed\\Desktop\\lab2_input.txt");
-		Polynomial p3 = new Polynomial(input_file);
-		System.out.println("p3(0.1) = " + p3.evaluate(0.1));
+  Polynomial p3 = new Polynomial(input_file);
+  System.out.println("p3(0.1) = " + p3.evaluate(0.1));
+  
+  double [] c4 = {-3, 9, -8, 7, 0, -1}; 
+  int [] e4 = {5, 4, 3, 2, 1, 0};
+  Polynomial p4 = new Polynomial(c4, e4);	
 		
-		File output_file = new File("C:\\Users\\Syeda Sumaiya Ahmed\\Desktop\\lab2_output.txt");
-		p3.saveToFile("lab2_output.txt");
+  p4.saveToFile("C:\\Users\\Syeda Sumaiya Ahmed\\Desktop\\lab2_output.txt");
+  p3.saveToFile("C:\\Users\\Syeda Sumaiya Ahmed\\Desktop\\lab2_output2.txt");
  
  } 
 } 
+
